@@ -1,26 +1,3 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>CollegeHub India - Find Top IIT, NIT, NEET Colleges Across India</title>
-    <meta name="description" content="Discover top colleges in India - IIT, NIT, NEET, BSc &amp; MSc colleges. Browse state-wise listings, compare rankings, and find your dream college." />
-    <meta name="keywords" content="IIT colleges, NIT colleges, NEET colleges, medical colleges, engineering colleges, Indian colleges, BSc colleges, MSc colleges, state wise colleges" />
-    <meta name="author" content="CollegeHub India" />
-    <meta name="robots" content="index, follow" />
-    <meta property="og:title" content="CollegeHub India - Find Top Colleges Across India" />
-    <meta property="og:description" content="Discover top colleges in India - IIT, NIT, NEET, BSc &amp; MSc. State-wise listings and comprehensive college information." />
-    <meta property="og:type" content="website" />
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="CollegeHub India - Find Top Colleges" />
-    <meta name="twitter:description" content="Discover IIT, NIT, NEET, BSc &amp; MSc colleges across India" />
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
-</html>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -110,7 +87,32 @@ button{
 cursor:pointer;
 font-weight:bold;
 }
+<script>
+function predict(){
 
+let rank = document.getElementById("rank").value;
+let exam = document.getElementById("exam").value;
+let result = "";
+
+if(exam==="JEE Main"){
+    if(rank<=1000) result="IIT Bombay / IIT Delhi";
+    else if(rank<=5000) result="Top NIT";
+    else result="Good Government Engineering College";
+}
+else if(exam==="JEE Advanced"){
+    if(rank<=500) result="IIT Bombay CSE";
+    else if(rank<=3000) result="Top IIT";
+    else result="Mid IIT";
+}
+else if(exam==="NEET"){
+    if(rank<=1000) result="Top AIIMS";
+    else if(rank<=10000) result="Government Medical College";
+    else result="Private Medical College";
+}
+
+document.getElementById("result").innerHTML=result;
+}
+</script>
 footer{
 text-align:center;
 padding:30px;
@@ -138,9 +140,8 @@ padding:30px;
 <h2>JEE / NEET Rank Predictor</h2>
 
 <input type="number" id="rank" placeholder="Enter Rank">
-
 <select id="exam">
-<option>JEE Main</option>
+    <option>JEE Main</option>
 <option>JEE Advanced</option>
 <option>NEET</option>
 </select>
